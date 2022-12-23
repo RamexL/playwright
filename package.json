@@ -1,0 +1,22 @@
+{
+  "name": "automatisation_ztrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.9.1",
+    "@types/node": "^18.11.17",
+    "allure-commandline": "^2.20.1",
+    "allure-playwright": "^2.0.0-beta.21",
+    "playwright": "^1.29.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.29.1"
+  }
+}
