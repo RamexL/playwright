@@ -1,6 +1,7 @@
 {
-    "quantité":"5",
-    "article":"div:nth-child(2) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D",
-    "produitsupp":"shirt",
-    "nom": "shirt"
+    "quantité":"2",
+    "article":"div:nth-child(3) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D",
+    "produitsupp":"Chaussures",
+    "nom": "shirt",
+    "nombresupp":2
 }

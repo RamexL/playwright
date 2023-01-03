@@ -1,8 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Fri Dec 23 11:53:39 WAT 2022","Fri Dec 23 11:53:47 WAT 2022","8052","chromium","deconnexion.spec.ts","","","","test de deconnexion",""
-"passed","Fri Dec 23 11:53:39 WAT 2022","Fri Dec 23 11:53:47 WAT 2022","7850","chromium","login.spec.ts","","","","test de connexion",""
-"passed","Fri Dec 23 11:53:47 WAT 2022","Fri Dec 23 11:53:55 WAT 2022","7820","chromium","supprimerproduit.spec.ts","","","","supprimer u produit au panier",""
-"failed","Fri Dec 23 11:53:45 WAT 2022","Fri Dec 23 11:53:56 WAT 2022","10550","chromium","recherche.spec.ts","","","","test de recherche produit",""
-"passed","Fri Dec 23 11:53:39 WAT 2022","Fri Dec 23 11:53:51 WAT 2022","11526","chromium","ajoutPanier.spec.ts","","","","ajouter u produit au panier",""
-"failed","Fri Dec 23 11:50:40 WAT 2022","Fri Dec 23 11:50:48 WAT 2022","7743","chromium","inscription.spec.ts","","","","test de register",""
-"passed","Fri Dec 23 11:53:39 WAT 2022","Fri Dec 23 11:53:45 WAT 2022","5914","chromium","inscription.spec.ts","","","","test de register",""
