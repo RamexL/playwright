@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import * as data from '../registerdatas.json';
+import {allure} from "allure-playwright"
+
 
 // test('test de register', async ({ page }) => {
 //   await page.goto('https://ztrain-web.vercel.app/auth/register');
@@ -76,3 +78,9 @@ test('Inscription avec une adresse mail invalde', async ({ page }) => {
 //   await expect(page).toHaveURL('https://ztrain-web.vercel.app/auth/register')
 
 // });
+
+test.afterAll(async({page})=>{
+  allure.addParameter("email",data.email)
+  allure.addParameter("mot de passe",data.mot_de_passe)
+
+})

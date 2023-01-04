@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { before } from 'node:test';
 import * as logindata from '../logindatas.json';
 import * as data from '../produit.json';
+import {allure} from "allure-playwright"
+
 //import {login} from "../tests/login.spec"
 
 test.beforeEach( async ({ page }) => {
@@ -18,7 +20,8 @@ test.beforeEach( async ({ page }) => {
 
   test('ajouter u produit au panier', async ({ page }) => {
     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
-    await page.locator(data.article).click();
+    let product_name=data.article
+    await page.locator(".style_card__gNEqX", { has: page.locator(`text=${product_name}`) }).click();
     await page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').click();
     await page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').fill(data.quantité);
     await page.getByRole('button', { name: 'Ajouter au panier' }).click();
@@ -33,4 +36,9 @@ test.beforeEach( async ({ page }) => {
 
   })
 
+  test.afterAll(async({page})=>{
+    allure.addParameter("article",data.article)
+    allure.addParameter("quantité",data.quantité)
+
+  })
   

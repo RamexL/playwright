@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { before } from 'node:test';
 import * as logindata from '../logindatas.json';
+import {allure} from "allure-playwright"
+
 //import {login} from "../tests/login.spec"
 
 test.beforeEach( async ({ page }) => {

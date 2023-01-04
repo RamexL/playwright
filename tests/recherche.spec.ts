@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { before } from 'node:test';
 import * as logindata from '../logindatas.json';
 import * as data from '../recherche.json';
+import {allure} from "allure-playwright"
+
 //import {login} from "../tests/login.spec"
 
 test.beforeEach( async ({ page }) => {
@@ -44,3 +46,8 @@ test('test de recherche produit', async ({ page }) => {
 
 
   // })
+
+  test.afterAll(async({page})=>{
+    allure.addParameter("article",data.input)
+
+  })

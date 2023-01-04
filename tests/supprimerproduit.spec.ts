@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { before } from 'node:test';
 import * as logindata from '../logindatas.json';
 import * as data from '../produit.json';
+import {allure} from "allure-playwright"
+
 //import {login} from "./login.spec"
 
 test.beforeEach( async ({ page }) => {
@@ -22,9 +24,15 @@ test.beforeEach( async ({ page }) => {
     //await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)    
     //await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp }).locator('svg').nth(2).click();
     for(let i=0; i<data.nombresupp; i++)
-    {await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click}
+    {page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click}
     await page.locator('#style_card_wrapper__hrc1I').click();
    await !expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)
    await page.pause
 
   });
+
+  test.afterAll(async({page})=>{
+    allure.addParameter("article",data.produitsupp)
+    allure.addParameter("quantité",data.quantité)
+
+  })
