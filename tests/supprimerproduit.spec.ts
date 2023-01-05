@@ -27,10 +27,9 @@ test.beforeEach( async ({ page }) => {
     let elemts =[1,2,3]
     elemts.forEach( async (element) => {
       console.log(element);
-      await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
-      page.pause
+      await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click({delay:1000});
     });
-    page.pause()
+    await page.pause()
 
     // page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click()
     await page.locator('#style_card_wrapper__hrc1I').click();
