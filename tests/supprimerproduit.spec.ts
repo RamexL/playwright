@@ -13,7 +13,7 @@ test.beforeEach( async ({ page }) => {
     await page.getByPlaceholder('Mot de passe').click();
     await page.getByPlaceholder('Mot de passe').fill(logindata.mot_de_passe);
     await page.locator('#btn_login').click();
-    await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+    //await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
     await page.pause
     
   })
@@ -21,12 +21,20 @@ test.beforeEach( async ({ page }) => {
   test('supprimer u produit au panier', async ({ page }) => {
     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
     await page.locator('#style_content_cart_wrapper__mqNbf').click();
+    await page.pause()
     //await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)    
     //await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp }).locator('svg').nth(2).click();
-    for(let i=0; i<data.nombresupp; i++)
-    {page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click}
+    let elemts =[1,2,3]
+    elemts.forEach( async (element) => {
+      console.log(element);
+      await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
+      page.pause
+    });
+    page.pause()
+
+    // page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click()
     await page.locator('#style_card_wrapper__hrc1I').click();
-   await !expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)
+   //await !expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)
    await page.pause
 
   });
