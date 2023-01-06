@@ -1,23 +1,32 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 import * as data from '../registerdatas.json';
 import {allure} from "allure-playwright"
 
 
-// test('test de register', async ({ page }) => {
-//   await page.goto('https://ztrain-web.vercel.app/auth/register');
-//   await page.getByPlaceholder('Email').click();
-//   await page.getByPlaceholder('Email').fill(data.email);
-//   await expect(page.getByPlaceholder('Email')).toHaveValue(data.email)
-//   await page.locator('#password_register').click();
-//   await page.locator('#password_register').fill(data.mot_de_passe);
-//   await expect(page.locator('#password_register')).toHaveValue(data.mot_de_passe)
-//   await page.getByPlaceholder('Confirmer votre mot de passe').click();
-//   await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
-//   await expect(page.getByPlaceholder('Confirmer votre mot de passe')).toHaveValue(data.mot_de_passe)
-//   await page.getByRole('button', { name: 'Inscription' }).click();
-//   await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+
+test.describe("regroupement", async()=>{
+  let page : Page
+test.beforeAll( async({browser})=>  {
+  page = await browser.newPage()
+})
+
+
+
+test('test de register', async () => {
+  await page.goto('https://ztrain-web.vercel.app/auth/register');
+  await page.getByPlaceholder('Email').click();
+  await page.getByPlaceholder('Email').fill(data.email);
+  await expect(page.getByPlaceholder('Email')).toHaveValue(data.email)
+  await page.locator('#password_register').click();
+  await page.locator('#password_register').fill(data.mot_de_passe);
+  await expect(page.locator('#password_register')).toHaveValue(data.mot_de_passe)
+  await page.getByPlaceholder('Confirmer votre mot de passe').click();
+  await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
+  await expect(page.getByPlaceholder('Confirmer votre mot de passe')).toHaveValue(data.mot_de_passe)
+  await page.getByRole('button', { name: 'Inscription' }).click();
+  await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
   
-// })
+})
 
 // test('Inscription avec email deja présent', async ({ page }) => {
 //   await page.goto('https://ztrain-web.vercel.app/auth/register');
@@ -35,22 +44,22 @@ import {allure} from "allure-playwright"
 
 // });
 
-test('Inscription avec une adresse mail invalde', async ({ page }) => {
-  await page.goto('https://ztrain-web.vercel.app/auth/register');
-  await page.getByPlaceholder('Email').click();
-  await page.getByPlaceholder('Email').fill(data.email);
-  await page.locator('#password_register').click();
-  await page.locator('#password_register').fill(data.mot_de_passe);
-  await page.getByPlaceholder('Confirmer votre mot de passe').click();
-  await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
-  await page.getByRole('button', { name: 'Inscription' }).click();
-  await expect(page.getByText('Le format de l\'email est invalid')).toHaveText('Le format de l\'email est invalid')
+// test('Inscription avec une adresse mail invalde', async () => {
+//   //await page.goto('https://ztrain-web.vercel.app/auth/register');
+//   await page.getByPlaceholder('Email').click();
+//   await page.getByPlaceholder('Email').fill(data.email);
+//   await page.locator('#password_register').click();
+//   await page.locator('#password_register').fill(data.mot_de_passe);
+//   await page.getByPlaceholder('Confirmer votre mot de passe').click();
+//   await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
+//   await page.getByRole('button', { name: 'Inscription' }).click();
+//   await expect(page.getByText('Le format de l\'email est invalid')).toHaveText('Le format de l\'email est invalid')
 
-  await expect(page).toHaveURL('https://ztrain-web.vercel.app/auth/register')
-});
+//   await expect(page).toHaveURL('https://ztrain-web.vercel.app/auth/register')
+// });
 
 // test('inscription avec un mot de passe trop cours', async ({ page }) => {
-//   await page.goto('https://ztrain-web.vercel.app/auth/register');
+//  // await page.goto('https://ztrain-web.vercel.app/auth/register');
 //   await page.getByPlaceholder('Email').click();
 //   await page.getByPlaceholder('Email').fill('ramexloic@gmail.com');
 //   await page.locator('#password_register').click();
@@ -79,8 +88,29 @@ test('Inscription avec une adresse mail invalde', async ({ page }) => {
 
 // });
 
-test.afterAll(async({page})=>{
+test.afterAll(async()=>{
   allure.addParameter("email",data.email)
   allure.addParameter("mot de passe",data.mot_de_passe)
 
 })
+})
+
+async function inscription(page:Page) {
+  await page.goto('https://ztrain-web.vercel.app/auth/register');
+  await page.getByPlaceholder('Email').click();
+  await page.getByPlaceholder('Email').fill(data.email);
+  await expect(page.getByPlaceholder('Email')).toHaveValue(data.email)
+  await page.locator('#password_register').click();
+  await page.locator('#password_register').fill(data.mot_de_passe);
+  await expect(page.locator('#password_register')).toHaveValue(data.mot_de_passe)
+  await page.getByPlaceholder('Confirmer votre mot de passe').click();
+  await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
+  await expect(page.getByPlaceholder('Confirmer votre mot de passe')).toHaveValue(data.mot_de_passe)
+  await page.getByRole('button', { name: 'Inscription' }).click();
+  await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+
+  allure.addParameter("email",data.email)
+  allure.addParameter("mot de passe",data.mot_de_passe)
+}
+
+module.exports = inscription
