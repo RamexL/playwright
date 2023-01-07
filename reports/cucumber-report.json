@@ -1,0 +1,106 @@
+[
+  {
+    "description": "  As a visitor of the ecommerce website\n  I want to be able to login",
+    "elements": [
+      {
+        "description": "",
+        "id": "login;login-user",
+        "keyword": "Scenario Outline",
+        "line": 6,
+        "name": "Login user",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 180171700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "i open Ztrain login page",
+            "match": {
+              "location": "gherkin\\step-definitions\\login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27595488600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I enter email address \"ramexdongmo@gmail.com\" and password \"Execution7.\"",
+            "match": {
+              "location": "gherkin\\step-definitions\\login.steps.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4454986800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I clicks to the login button",
+            "match": {
+              "location": "gherkin\\step-definitions\\login.steps.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1176551899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "The user is connected with  \"Z-Train\"",
+            "match": {
+              "location": "gherkin\\step-definitions\\login.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3202149399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 876260100
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@log01",
+            "line": 5
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
+    "uri": "features\\login.feature"
+  }
+]

@@ -17,7 +17,7 @@
     formatOptions: { snippetInterface: "async-await" },
     // worldParameters: getWorldParams(),
     publishQuiet: true,
-    tags: "@log01",
+    //tags: "@log01",
     retry: 1,
   };
   //config.format.push('./reporter.ts');
