@@ -51,7 +51,7 @@ datas.forEach( (element) => {
   // await page.getByRole('button', { name: 'Ajouter au panier' }).click();
     await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour');  
     await page.waitForTimeout(2000)
-   // await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.nom)
+    await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.nom)
     await page.locator('#style_header_home__8t_ie').click();
 
   })
@@ -104,12 +104,14 @@ async function ajoupanier(page:Page) {
       await page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').fill(data.quantité);
       await page.getByRole('button', { name: 'Ajouter au panier' }).click();
       await page.locator('#style_content_cart_wrapper__mqNbf').click();
-      
+      await page.waitForTimeout(1000)
       //await expect (page.getByRole('heading', { name: '6295.10 €' }));
       //await expect (page.locator('{id="style_totalPrice__o2yCy"}')) 
       //await page.locator('div:nth-child(5) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D').click();
     // await page.getByRole('button', { name: 'Ajouter au panier' }).click();
-      await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour');  
+      await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour'); 
+      await page.waitForTimeout(2000)
+
       await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.nom)
       await page.locator('#style_header_home__8t_ie').click();
 
@@ -120,27 +122,24 @@ async function ajoupanier(page:Page) {
 
 async function ajoutflopproduit(page:Page) {
   datas.forEach( (element) => {
-    test(`ajouter plusieurs produits au panier ${element.article}`, async () => {
-     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+      expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
      let product_name=element.article
-     await page.locator(".style_card__gNEqX", { has: page.locator(`text=${product_name}`) }).click();
-     await page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').click();
-     await page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').fill(element.quantité);
-     await page.getByRole('button', { name: 'Ajouter au panier' }).click();
-     await page.locator('#style_content_cart_wrapper__mqNbf').click();
-     await page.waitForTimeout(1000)
+      page.locator(".style_card__gNEqX", { has: page.locator(`text=${product_name}`) }).click();
+      page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').click();
+      page.locator('#style_quantity_wrapper__2QMug').getByRole('textbox').fill(element.quantité);
+      page.getByRole('button', { name: 'Ajouter au panier' }).click();
+      page.locator('#style_content_cart_wrapper__mqNbf').click();
+      page.waitForTimeout(1000)
      
-     //await expect (page.getByRole('heading', { name: '6295.10 €' }));
-     //await expect (page.locator('{id="style_totalPrice__o2yCy"}')) 
-     //await page.locator('div:nth-child(5) > .style_card_body__QuFGN > span > .style_card_body_img__mkV1D').click();
-   // await page.getByRole('button', { name: 'Ajouter au panier' }).click();
-     await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour');  
-     await page.waitForTimeout(2000)
-    // await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.nom)
-     await page.locator('#style_header_home__8t_ie').click();
+
+      expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour');  
+      page.waitForTimeout(2000)
+      expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.nom)
+      page.locator('#style_header_home__8t_ie').click();
+      page.reload()
  
-   })
  });
 }
 
-module.exports = {ajoupanier, ajoutflopproduit}
+module.exports = ajoupanier
+//module.exports = ajoutflopproduit

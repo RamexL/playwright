@@ -37,15 +37,14 @@ test.describe("rechcerche",async () => {
 
   test('test de recherche produit', async () => {
     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+    await page.waitForTimeout(2000)
     await page.getByPlaceholder('Rechecher un produit').click();
     await page.getByPlaceholder('Rechecher un produit').fill(data.input);
-    await page.pause
 
     await page.getByPlaceholder('Rechecher un produit').press('Enter');
     await expect(page.getByPlaceholder('Rechecher un produit')).toHaveValue(data.input)
-    await expect(page.locator('[id=style_popular_product_wrapper__z6J0h]')).toContainText(data.input)
+    await expect(page.locator('[id=style_popular_product_wrapper__z6J0h]'), {message:"produit non trouvé"}).toContainText(data.input)
    
-
 
   })
   
@@ -86,13 +85,15 @@ test.describe("rechcerche",async () => {
 
   async function recherche(page:Page) {
     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+    await page.waitForTimeout(2000)
     await page.getByPlaceholder('Rechecher un produit').click();
     await page.getByPlaceholder('Rechecher un produit').fill(data.input);
-    await page.pause
 
     await page.getByPlaceholder('Rechecher un produit').press('Enter');
     await expect(page.getByPlaceholder('Rechecher un produit')).toHaveValue(data.input)
     await expect(page.locator('[id=style_popular_product_wrapper__z6J0h]')).toContainText(data.input)
+    await page.waitForTimeout(5000)
+
     allure.addParameter("article",data.input)
 
     

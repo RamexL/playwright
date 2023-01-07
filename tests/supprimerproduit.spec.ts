@@ -39,7 +39,8 @@ test.beforeAll( async ({browser}) => {
     // await page.locator('#style_content_cart_wrapper__mqNbf').click();
     //await expect(page.locator('[id="style_card_wrapper__hrc1I"]')).toContainText(data.produitsupp)    
     //await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp }).locator('svg').nth(2).click();
-    
+    await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit inexistant"}).toContainText(data.produitsupp)
+
       await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
       await page.waitForTimeout(2000);
     
@@ -80,25 +81,29 @@ test.beforeAll( async ({browser}) => {
 
 
 async function supprimer(page:Page) {
+  await expect(page).toHaveURL("https://ztrain-web.vercel.app/home")
+  await page.locator('#style_content_cart_wrapper__mqNbf').click();
+
   let clickList:any[]=[];
- var conteur=0
+  var conteur=0
+ 
+   for(let i=0; i<data.nombresupp; i++  ){
+     clickList.push(conteur+i)
+   }
+ 
+  
+   console.log(clickList)
+ 
 
-  for(let i=0; i<data.nombresupp; i++  ){
-    clickList.push(conteur+i)
-  }
-
- clickList.forEach(element => {
-  console.log(clickList)
-
-  test(`supprimer  produit au panier ${element}`, async () => {
+      await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit inexistant"}).toContainText(data.produitsupp)
+ 
+      await  page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
+      await  page.waitForTimeout(2000);
+    
+ 
+ 
    
-      await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
-      await page.waitForTimeout(2000);
-      allure.addParameter("article",data.produitsupp)
-      allure.addParameter("quantité",data.nom)
 
-  });
- });
   
 }
 

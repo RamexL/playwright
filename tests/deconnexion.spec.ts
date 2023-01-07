@@ -32,6 +32,7 @@ test.describe('deconnexion', async () => {
 })
 
 async function decotest(page:Page){
+  await expect(page).toHaveURL("https://ztrain-web.vercel.app/home")
   await page.locator('#style_avatar_wrapper__pEGIQ svg').nth(1).click();
     await page.getByRole('link', { name: 'Se déconnecter' }).click();
     await expect(page).toHaveURL(logindata.urldeco)
