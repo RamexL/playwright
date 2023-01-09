@@ -1,6 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 import * as data from '../logindatas.json';
 import {allure} from "allure-playwright";
+import assert from 'assert/strict';
 
 
 // test.beforeEach(async ({ page }) => {
@@ -29,6 +30,7 @@ test('test de connexion', async () => {
     await expect(page.getByPlaceholder('Mot de passe')).toHaveValue(data.mot_de_passe)
     await page.locator('#btn_login').click();
     await expect(page,{message:"erreur de login"}).toHaveURL('https://ztrain-web.vercel.app/home')
+    
     
   })
 

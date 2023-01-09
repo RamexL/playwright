@@ -1,4 +1,5 @@
 import { test, Page } from "@playwright/test"
+import assert from "assert"
 
 const login = require("./login.spec")
 const deconnexion = require("./deconnexion.spec")
@@ -12,22 +13,21 @@ const inscription = require("./inscription.spec")
 test.describe("testes à la chaine", async()=>{
     let page:Page
     test.beforeAll(async ({browser}) => {
-        
         page = await browser.newPage()
     })
 
 
-    // test("inscription", async () => {
-    //     await inscription(page);
-    //   });
+    test("inscription", async () => {
+        await inscription(page);
+      });
 
     test("Login", async () => {
         await login(page);
       });
 
-    //   test("ajout panier", async () => {
-    //     await ajoupanier(page);
-    //   });
+      test("ajout panier", async () => {
+        await ajoupanier(page);
+      });
 
     // test("ajout panier", async () => {
     //     await ajoutflopproduit(page);
@@ -35,16 +35,17 @@ test.describe("testes à la chaine", async()=>{
 
       
 
-    //   test("recherche", async () => {
-    //     await rechcerche(page);
-    //     page.waitForTimeout(6000)
-    //   });
-
-    test("supprimer produit", async () => {
-        await suppression(page);
+      test("recherche", async () => {
+        await rechcerche(page);
+        page.waitForTimeout(6000)
       });
 
-    //   test("deconnexion", async () => {
-    //     await deconnexion(page);
-    //   }); 
+    test("supprimer", async () => {
+        await suppression(page);
+        
+    });
+
+      test("deconnexion", async () => {
+        await deconnexion(page);
+      }); 
 })

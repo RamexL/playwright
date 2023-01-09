@@ -93,6 +93,8 @@ test.describe("rechcerche",async () => {
     await expect(page.getByPlaceholder('Rechecher un produit')).toHaveValue(data.input)
     await expect(page.locator('[id=style_popular_product_wrapper__z6J0h]')).toContainText(data.input)
     await page.waitForTimeout(5000)
+    await page.locator('#style_header_home__8t_ie').click();
+
 
     allure.addParameter("article",data.input)
 

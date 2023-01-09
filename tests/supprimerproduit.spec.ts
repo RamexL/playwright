@@ -99,11 +99,9 @@ async function supprimer(page:Page) {
  
       await  page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
       await  page.waitForTimeout(2000);
-    
- 
- 
-   
+      await page.locator('#style_header_home__8t_ie').click();
 
+      allure.addParameter("article", data.produitsupp)
   
 }
 
