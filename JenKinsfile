@@ -25,6 +25,18 @@ pipeline {
         }
       } */
     }
+
+    stage('Reports') {
+      steps {
+          allure([
+          includeProperties: false,
+          jdk: '',
+          properties: [[key: 'Browser', value: 'Chrome']],
+          reportBuildPolicy: 'ALWAYS',
+          results: [[path: 'allure-results']]
+        ])
+      }
+    }
   }
 }
 
