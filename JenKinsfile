@@ -16,7 +16,7 @@ pipeline {
     } */
     stage('test') {
       steps {
-        bat 'npx playwright test login --headed'
+        bat 'npx playwright test login ajoutPanier recherche deconnexion --headed'
       }
 /*       post {
         success {
