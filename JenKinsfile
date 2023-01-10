@@ -32,7 +32,7 @@ pipeline {
       }
     } */
   }
-  post {
+  post ('Reporting') {
     always {
         allure([
             includeProperties: true,
