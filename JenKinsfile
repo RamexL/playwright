@@ -26,21 +26,18 @@ pipeline {
         } */
         }
     }
-    post ('Reporting') {
-        always {
-            stage('Reports') {
-                steps {
-                    allure([
-                        includeProperties: true,
-                        jdk: '',
-                        properties: [[key: 'Browser', value: 'Chrome']],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'allure-results']]
-                    ])
-                }
-            }
+    post {
+        always ('Reporting') {
+            allure([
+                includeProperties: true,
+                jdk: '',
+                properties: [[key: 'Browser', value: 'Chrome']],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
         }
     }
+
 }
 
 
