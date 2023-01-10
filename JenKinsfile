@@ -16,7 +16,7 @@ pipeline {
         } */
         stage('test') {
         steps {
-            bat 'npx playwright test login'
+            bat 'npx playwright test login '
         }
      /*       post {
             success {
@@ -27,7 +27,7 @@ pipeline {
         }
     }
     post {
-        always ('Reporting') {
+        always {
             allure([
                 includeProperties: true,
                 jdk: '',
