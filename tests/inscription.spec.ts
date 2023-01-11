@@ -113,4 +113,4 @@ async function inscription(page:Page) {
   allure.addParameter("mot de passe",data.mot_de_passe)
 }
 
-module.exports = inscription
+module.exports = inscription;

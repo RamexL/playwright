@@ -17,11 +17,11 @@ pipeline {
         stage('test') {
         steps {
         
-           // bat 'npx playwright test login '
-            bat '''
-            npx allure generate -c -o ./allure-results
-            npx playwright test login
-            '''
+           bat 'npx playwright test login '
+        //     bat '''
+        //     npx allure generate -c -o ./allure-results
+        //     npx playwright test login
+        //     '''
         }
      /*       post {
             success {
