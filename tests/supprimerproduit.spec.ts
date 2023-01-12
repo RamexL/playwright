@@ -109,6 +109,9 @@ async function supprimer(page:Page) {
       await page.locator('#style_header_home__8t_ie').click();
 
       allure.addParameter("article", data.produitsupp)
+      const date = new Date();
+
+      allure.addParameter("date", date.toString())
   
 }
 

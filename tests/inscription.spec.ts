@@ -118,6 +118,9 @@ async function inscription(page:Page) {
 
   allure.addParameter("email",data.email)
   allure.addParameter("mot de passe",data.mot_de_passe)
+  const date = new Date();
+
+  allure.addParameter("date", date.toString())
 }
 
 module.exports = inscription;

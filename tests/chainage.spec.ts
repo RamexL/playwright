@@ -1,4 +1,5 @@
 import { test, Page } from "@playwright/test"
+import { allure } from "allure-playwright"
 import assert from "assert"
 
 const login = require("./login.spec")
@@ -14,6 +15,9 @@ test.describe("testes à la chaine", async()=>{
     let page:Page
     test.beforeAll(async ({browser}) => {
         page = await browser.newPage()
+        const date = new Date();
+
+         allure.addParameter("date", date.toString())
     })
 
 

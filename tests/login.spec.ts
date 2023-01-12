@@ -57,6 +57,9 @@ test('test de connexion', async () => {
 test.afterAll(async({}, testInfo)=>{
   allure.addParameter("email",data.email)
   allure.addParameter("mot de passe",data.mot_de_passe)
+  const date = new Date();
+
+  allure.addParameter("date", date.toString())
   
   await page.close() // Required for successful save of video recording.
   const path = await page.video().path()
@@ -81,6 +84,9 @@ async function login(page:Page, testInfo) {
 
     allure.addParameter("email",data.email)
     allure.addParameter("mot de passe",data.mot_de_passe)
+    const date = new Date();
+
+    allure.addParameter("date", date.toString())
 
     const path = await page.video().path()
     await testInfo.attach('video', {

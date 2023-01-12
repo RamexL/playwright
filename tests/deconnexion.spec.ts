@@ -19,6 +19,10 @@ test.describe('deconnexion', async () => {
     await page.locator('#btn_login').click();
     await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
     await page.pause
+
+    const date = new Date();
+
+  allure.addParameter("date", date.toString())
     
     
   })
@@ -36,6 +40,10 @@ async function decotest(page:Page){
   await page.locator('#style_avatar_wrapper__pEGIQ svg').nth(1).click();
     await page.getByRole('link', { name: 'Se déconnecter' }).click();
     await expect(page).toHaveURL(logindata.urldeco)
+    
+    const date = new Date();
+
+  allure.addParameter("date", date.toString())
   
 }
 

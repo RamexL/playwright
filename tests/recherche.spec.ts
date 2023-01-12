@@ -79,6 +79,11 @@ test.describe("rechcerche",async () => {
 
   test.afterAll(async({}, testInfo)=>{
     allure.addParameter("article",data.input)
+
+    const date = new Date();
+
+    allure.addParameter("date", date.toString())
+
     await page.waitForTimeout(5000)
     await page.close() // Required for successful save of video recording.
     const path = await page.video().path()
