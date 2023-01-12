@@ -54,15 +54,21 @@ test('test de connexion', async () => {
 //       })
 //   }
 
-test.afterAll(async()=>{
+test.afterAll(async({}, testInfo)=>{
   allure.addParameter("email",data.email)
   allure.addParameter("mot de passe",data.mot_de_passe)
-
+  
+  await page.close() // Required for successful save of video recording.
+  const path = await page.video().path()
+  await testInfo.attach('video', {
+    path,
+    contentType: 'video/webm',
+  })
 })
 
 })
 
-async function login(page:Page) {
+async function login(page:Page, testInfo) {
   await page.goto('https://ztrain-web.vercel.app/auth/login');
     await page.getByPlaceholder('Email').click();
     await page.getByPlaceholder('Email').fill(data.email);
@@ -71,10 +77,16 @@ async function login(page:Page) {
     await page.getByPlaceholder('Mot de passe').fill(data.mot_de_passe);
     await expect(page.getByPlaceholder('Mot de passe')).toHaveValue(data.mot_de_passe)
     await page.locator('#btn_login').click();
-    // await expect(page,{message:"erreur de login"}).toHaveURL('https://ztrain-web.vercel.app/home')
+    await expect(page,{message:"erreur de login"}).toHaveURL('https://ztrain-web.vercel.app/home')
 
     allure.addParameter("email",data.email)
     allure.addParameter("mot de passe",data.mot_de_passe)
+
+    const path = await page.video().path()
+    await testInfo.attach('video', {
+      path,
+      contentType: 'video/webm',
+    })
   
 }
 

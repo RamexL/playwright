@@ -44,10 +44,17 @@ datas.forEach( (element) => {
 
   
 
-  test.afterAll(async({})=>{
+  test.afterAll(async({}, testInfo)=>{
     allure.addParameter("article",data.article)
     allure.addParameter("quantité",data.quantité)
     await page.getByRole('heading', { name: 'Normal d\'être impatient.' }).click();
+    await page.waitForTimeout(5000)
+    await page.close() // Required for successful save of video recording.
+    const path = await page.video().path()
+    await testInfo.attach('video', {
+      path,
+      contentType: 'video/webm',
+    })
 
 
   })
