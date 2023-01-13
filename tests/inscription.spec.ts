@@ -24,7 +24,7 @@ test('test de register', async () => {
   await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
   await expect(page.getByPlaceholder('Confirmer votre mot de passe')).toHaveValue(data.mot_de_passe)
   await page.getByRole('button', { name: 'Inscription' }).click();
-  await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+  await expect(page, {message:"echec de creation de compte"}).toHaveURL('https://ztrain-web.vercel.app/home')
   
 })
 
@@ -114,13 +114,11 @@ async function inscription(page:Page) {
   await page.getByPlaceholder('Confirmer votre mot de passe').fill(data.mot_de_passe);
   await expect(page.getByPlaceholder('Confirmer votre mot de passe')).toHaveValue(data.mot_de_passe)
   await page.getByRole('button', { name: 'Inscription' }).click();
-  await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+  await expect(page, {message:"echec de creation de compte"}).toHaveURL('https://ztrain-web.vercel.app/home')
 
   allure.addParameter("email",data.email)
   allure.addParameter("mot de passe",data.mot_de_passe)
-  const date = new Date();
-
-  allure.addParameter("date", date.toString())
+  
 }
 
 module.exports = inscription;

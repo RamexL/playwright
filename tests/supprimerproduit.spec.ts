@@ -17,7 +17,7 @@ test.beforeAll( async ({browser}) => {
     //await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
     //await page.pause
 
-    await expect(page).toHaveURL('https://ztrain-web.vercel.app/home')
+    await expect(page, {message:"exhec de rechargement de la page"}).toHaveURL('https://ztrain-web.vercel.app/home')
     
     await page.locator('#style_content_cart_wrapper__mqNbf').click();
     
@@ -105,6 +105,7 @@ async function supprimer(page:Page) {
       await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit inexistant"}).toContainText(data.produitsupp)
  
       await  page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp}).locator('span').nth(2).click();
+      await page.locator('#style_card_wrapper__hrc1I div').filter({ hasText: data.produitsupp }).locator('svg').nth(2).click();
       await  page.waitForTimeout(2000);
       await page.locator('#style_header_home__8t_ie').click();
 

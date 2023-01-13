@@ -34,9 +34,9 @@ datas.forEach( (element) => {
     await page.waitForTimeout(1000)
     
    
-    await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour');  
+    await expect (page.getByText('Votre panier à été mis à jour'), {message:"produit non ajouté au panier"}).toHaveText('Votre panier à été mis à jour');  
     await page.waitForTimeout(2000)
-    await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit non ajouté au panier"}).toContainText(element.nom)
+    await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit absent au panier"}).toContainText(element.nom)
     await page.locator('#style_header_home__8t_ie').click();
 
   })
@@ -73,10 +73,10 @@ async function ajoupanier(page:Page) {
       await page.locator('#style_content_cart_wrapper__mqNbf').click();
       await page.waitForTimeout(1000)
 
-      await expect (page.getByText('Votre panier à été mis à jour')).toHaveText('Votre panier à été mis à jour'); 
+      await expect (page.getByText('Votre panier à été mis à jour'), {message:"produit non ajouté au panier"}).toHaveText('Votre panier à été mis à jour'); 
       await page.waitForTimeout(2000)
 
-      await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit non ajouté au panier"}).toContainText(data.nom)
+      await expect(page.locator('[id="style_card_wrapper__hrc1I"]'), {message:"produit ébsent au panier"}).toContainText(data.nom)
       await page.locator('#style_header_home__8t_ie').click();
       page.waitForTimeout(2000)
 

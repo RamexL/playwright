@@ -30,20 +30,21 @@ test.describe('deconnexion', async () => {
   test('test de deconnexion', async () => {
     await page.locator('#style_avatar_wrapper__pEGIQ svg').nth(1).click();
     await page.getByRole('link', { name: 'Se déconnecter' }).click();
-    await expect(page).toHaveURL(logindata.urldeco)
+    await expect(page, {message:"deconnexion echoué"}).toHaveURL(logindata.urldeco)
   })
   
 })
 
 async function decotest(page:Page){
+  const date = new Date();
+  allure.addParameter("date", date.toString())
+
   await expect(page).toHaveURL("https://ztrain-web.vercel.app/home")
   await page.locator('#style_avatar_wrapper__pEGIQ svg').nth(1).click();
     await page.getByRole('link', { name: 'Se déconnecter' }).click();
-    await expect(page).toHaveURL(logindata.urldeco)
-    
-    const date = new Date();
+    await expect(page, {message:"deconnexion echoué"}).toHaveURL(logindata.urldeco)
 
-  allure.addParameter("date", date.toString())
+    
   
 }
 
